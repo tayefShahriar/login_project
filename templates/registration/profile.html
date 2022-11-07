@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<!--{{user.username}}<br/>-->
+<!--{{user.email}}-->
+<!--<img src="{{user.profile.image.url}}" alt="No_image">-->
+<div class="container">
+        <img style="width:100px; height:100px; border-radius:50px" src="{{user.profile.image.url}}" alt="no_image">
+        <h3>Username = {{user.username}}</h3>
+        <h3>First Name = {{user.first_name}}</h3>
+        <h3>Last Name = {{user.last_name}}</h3>
+        <h3>Email = {{user.email}}</h3>
+        <div class="row">
+                <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{p_form|crispy}}
+                        {{u_form|crispy}}
+                        <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+        </div>
+</div>
+{% endblock content %}

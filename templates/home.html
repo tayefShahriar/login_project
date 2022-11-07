@@ -5,6 +5,13 @@
 {% block content %}
 <h1>Home page</h1>
 {% for p in posts %}
-    {{p.author}}
+<div class="card my-2" style="width: 18rem;">
+  <img src="{{p.author.profile.image.url}}" height="100px" width="100px" alt="Card image cap">
+  <div class="card-body">
+    <a href="{% url 'postdetails' p.id %}"><h5 class="card-title">{{p.author}}</h5></a>
+    <h6>{{p.title}}</h6>
+    <p class="card-text">{{p.text}}</p>
+  </div>
+</div>
 {% endfor %}
 {% endblock %}
